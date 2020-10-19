@@ -296,7 +296,7 @@ cat << EOF > ${db_response_file}
 oracle.install.responseFileVersion=/oracle/install/rspfmt_dbinstall_response_schema_v12.2.0
 oracle.install.option=INSTALL_DB_SWONLY
 UNIX_GROUP_NAME=oinstall
-INVENTORY_LOCATION=/u01/app/oracle/oraInventory
+INVENTORY_LOCATION=${ORACLE_BASE}/oraInventory
 ORACLE_HOME=${ORACLE_HOME}
 ORACLE_BASE=${ORACLE_BASE}
 oracle.install.db.InstallEdition=EE
@@ -398,7 +398,7 @@ fi
 
 ###set listener&tnsnames
 echo "############################ Oracle listener && dbca #######################################"
-NETCA=`find /u01/database -type f -name netca.rsp`
+NETCA=`find /${ora_dir}/database -type f -name netca.rsp`
 su - oracle << EOF
 source ~/.bash_profile
 ${ORACLE_HOME}/bin/netca -silent -responsefile ${NETCA} >/tmp/oracle.out 2>&1
